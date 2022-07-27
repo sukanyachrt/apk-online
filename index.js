@@ -36,10 +36,10 @@ app.use('/api/v1/rejectaprdoc', require('./apronline/rejectaprdoc.js'));
 app.use('/api/v1/detaildoc', require('./apronline/detaildoc.js'));
 app.use('/api/v1/line', require('./apronline/line.js'));
 app.use('/api/v1/line2', require('./line.js'));
-const options = {
-  key: fs.readFileSync("key.pem"),
-  cert: fs.readFileSync("cert.pem"),
-};
+// const options = {
+//   key: fs.readFileSync("key.pem"),
+//   cert: fs.readFileSync("cert.pem"),
+// };
 
 const server = app.listen(3006, function(){
   var host = server.address().address;
