@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+
+<style type="text/css">
+.holder_wrap{
+position:relative;
+margin:auto;
+display:block;
+height:120px; /* กำหนดความสูงส่วนพื้นที่คลุมเนื้อหาทั้งหมด */
+}
+.holder_wrap_img{
+position:absolute;/* กำหนดการจัดตำแหน่งส่วนพื้นที่คลุมเนื้อหารุปและข้อความซ้อนทับ */
+}
+.holder_wrap_img img{
+position:relative; /* กำหนดการจัดตำแหน่งของรูป */
+}
+/* css ซ้อนทับ ชิดขอบบน */
+.inner_position_top{
+position:absolute;
+display:block;
+background-color:#CC99FF;
+height:50px; /* กำหนดความสูงส่วนของเนื้อหาที่นำมาซ้อนทับ */
+width:100%; /* กำหนดความกว้างของเนื้อหาที่นำมาซ้อนทับ แบบขยายเต็ม */
+top:0px; /* css กำหนดชิดด้านบน */
+z-index:999;
+}
+/* css ซ้อนทับ ชิดขอบด้านซ้าย */
+.inner_position_left{
+position:absolute;
+display:block;
+background-color:#99FFCC;
+height:100%;/* กำหนดความสูงส่วนของเนื้อหาที่นำมาซ้อนทับ แบบขยายเต็ม */
+width:50px; /* กำหนดความกว้างของเนื้อหาที่นำมาซ้อนทับ */
+top:0px; /* css กำหนดชิดด้านบน */
+left:0px; /* css กำหนดชิดซ้าย */
+z-index:999;
+}
+/* css ซ้อนทับ ชิดขอบล่าง */
+.inner_position_bottom{
+position:absolute;
+display:block;
+background-color:#FFCCCC;
+height:50px; /* กำหนดความสูงส่วนของเนื้อหาที่นำมาซ้อนทับ */
+width:100%; /* กำหนดความกว้างของเนื้อหาที่นำมาซ้อนทับ แบบขยายเต็ม */
+bottom:0px; /* css กำหนดชิดด้านล่าง */
+z-index:999;
+}
+/* css ซ้อนทับ ชิดขอบด้านขวา */
+.inner_position_right{
+position:absolute;
+display:block;
+background-color:#FFFF99;
+height:100%;/* กำหนดความสูงส่วนของเนื้อหาที่นำมาซ้อนทับ แบบขยายเต็ม */
+width:50px; /* กำหนดความกว้างของเนื้อหาที่นำมาซ้อนทับ */
+top:0px; /* css กำหนดชิดด้านบน */
+right:0px; /* css กำหนดชิดขวา */
+z-index:999;
+}
+</style>
+</head>
+
+<body>
+
+
+
+<div class="holder_wrap">
+<div class="holder_wrap_img">
+<img src="http://www.ninenik.com/userfiles/12/image/1.jpg" />
+<div class="inner_position_top">
+ซ้อนทับ ชิดขอบบน
+</div>
+</div>
+</div>
+
+<br style="clear:both;float:left;" />
+
+
+<div class="holder_wrap">
+<div class="holder_wrap_img">
+<img src="http://localhost:3006/api/v1/image/sign/1-9098-00486-39-9-name.PNG" />
+<div class="inner_position_left">
+ซ้อนทับ ชิดขอบซ้าย
+</div>
+</div>
+</div>
+
+<br style="clear:both;float:left;" />
+
+
+<div class="holder_wrap">
+<div class="holder_wrap_img">
+<img src="http://localhost:3006/api/v1/image/sign/1-9098-00486-39-9-name.PNG" />
+<div class="inner_position_bottom">
+ซ้อนทับ ชิดขอบล่าง
+</div>
+</div>
+</div>
+
+<br style="clear:both;float:left;" />
+
+<div class="holder_wrap">
+<div class="holder_wrap_img">
+<img src="http://localhost:3006/api/v1/image/sign/1-9098-00486-39-9-name.PNG" />
+<div class="inner_position_right">
+ซ้อนทับ ชิดขอบขวา
+</div>
+</div>
+</div>
+</body>
+</html>
+
+Read more: http://www.webub.com/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%20css%20%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%95%E0%B8%B3%E0%B9%81%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%87%20%E0%B8%8B%E0%B9%89%E0%B8%AD%E0%B8%99%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%9A%EF%BF%BD-1506-14/
+Engine by www.webUB.com

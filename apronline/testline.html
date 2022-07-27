@@ -1,0 +1,62 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เชื่อมต่อไลน์</title>
+  <style>
+    #pictureUrl { display: block; margin: 0 auto }
+  </style>
+</head>
+<body>
+  <img id="pictureUrl" width="25%">
+        <p id="userId">
+            <b>userId : </b>
+        </p>
+        <p id="displayName">
+            <b>displayName : </b>
+        </p>
+        <p id="statusMessage">
+            <b>statusMessage : </b>
+        </p>
+        <p id="decodedIDToken">
+            <b>email : </b>
+        </p>
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.3.0/sdk.js"></script>
+  <script>
+     const liffId = "1657327042-AkwY07mb";
+            liff.init({ liffId });
+            async function getUserProfile(){
+                const profile=await liff.getProfile()
+                document.getElementById("pictureUrl").src=profile.pictureUrl
+                document.getElementById("userId").append(profile.userId)
+                document.getElementById("statusMessage").append(profile.statusMessage)
+                document.getElementById("displayName").append(profile.displayName)
+              //  document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+            }
+            async function main(){
+                await liff.init({liffId : "1657327042-AkwY07mb",withLoginOnExternalBrowser:true})
+                if(liff.isLoggedIn()){
+                    getUserProfile()
+                }
+                
+            }
+            main()
+//     async function runApp() {
+//         await liff.getProfile().then(profile => {
+//         document.getElementById("pictureUrl").src = profile.pictureUrl;
+//         document.getElementById("userId").append (profile.userId);
+//         document.getElementById("displayName").append (profile.displayName);
+//         document.getElementById("statusMessage").append (profile.statusMessage);
+//         document.getElementById("getDecodedIDToken").append (liff.getDecodedIDToken().email);
+//       }).catch(err => console.error(err));
+//     }
+//     liff.init({ liffId: "1657327042-AkwY07mb" ,withLoginOnExternalBrowser:true}, () => {
+//       if (liff.isLoggedIn()) {
+//         runApp()
+//       } else {
+//         liff.login();
+//       }
+//    }, err => console.error(err.code, error.message));
+  </script>
+</body>
+</html>

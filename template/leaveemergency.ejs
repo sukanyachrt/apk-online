@@ -1,0 +1,344 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        @page {
+
+            margin: 100px 25px;
+            size: A4;
+
+            @top-left {
+                content: element(pageHeader);
+            }
+
+            @bottom-left {
+                content: element(pageHeader);
+            }
+        }
+
+        #pageHeader {
+            /* height: 120mm; */
+
+            position: running(pageHeader);
+
+        }
+
+        #pageFooter {
+            text-align: right;
+            position: running(pageFooter);
+        }
+
+
+        body {
+            /*  font-family: "Helvetica Neue", sans-serif;*/
+            font-family: "Angsana New", sans-serif;
+            color: #000;
+            padding: 20px;
+            background-image: './image1.PNG';
+        }
+
+        p {
+            page-break-inside: avoid;
+        }
+
+        table {
+
+            width: 100%;
+            text-align: left;
+            font-size: 1.35em;
+
+        }
+
+        thead {
+            display: table-header-group;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+            padding-right: 5%;
+        }
+
+        .left {
+            text-align: left;
+            padding-left: 5%;
+        }
+
+
+
+
+        tr {
+            page-break-inside: avoid;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        #my_div {
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        #my_div img {
+            max-width: 100%;
+        }
+
+        #my_div p {
+            position: absolute;
+            color: black;
+            font-size: 18px;
+            top: 65px;
+
+            text-align: center;
+            font-weight: bold;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="pageHeader">
+        <div style="text-align: center;" style="padding-bottom: 20px;">
+            <img src="https://www.apkgroup.co.th/intranet/api/logoicon.jpg" alt="">
+        </div>
+
+    </div>
+    <table id="pageContent">
+
+        <tr>
+            <!-- <th align="left">
+                    <img src="http://localhost:3006/api/v1/image/logoicon.jpg" alt="">
+                </th> -->
+            <th class="center" colspan="2">
+                แบบฟอร์มขออนุมัติการลา (กรณีฉุกเฉิน)
+            </th>
+        </tr>
+        <tr>
+            <th class="right" style="padding-top: 20px;" colspan="2">วันที่ <%=data.dateKey %>
+            </th>
+
+        </tr>
+        <tr>
+            <th class="left" style="padding-top: 15px;" colspan="2">เรื่อง : ขออนุมัติการลา (กรณีฉุกเฉิน)</th>
+
+        </tr>
+        <tr>
+            <th class="left" style="padding-top: 10px;" colspan="2">เรียน : ผู้อำนวยการฝ่ายทรัพยากรบุคคล</th>
+
+        </tr>
+
+        <tr>
+            <td class="left" colspan="2">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <b>ข้าพเจ้า</b>
+                <%= employ.fullname %>
+
+
+                    <b>ตำแหน่ง</b>
+
+                    <%= employ.position %>
+
+                        <b>แผนก</b>
+
+                        <%= employ.depart %>
+
+                            <b>ฝ่าย</b>
+
+                            สารสนเทศ
+
+            </td>
+        </tr>
+        <tr>
+            <td class="left" colspan="2">
+                <b>มีความประสงค์ขออนุมัติ</b>
+
+
+                <% if(data.data.typeleave=='ลาอื่นๆ (โปรดระบุในรายละเอียดให้ชัดเจน)' ){ %>
+                    ลาอื่นๆ
+                    <% } else {%>
+                        <%=data.data.typeleave %>
+                            <% } %>
+                                &nbsp;&nbsp;&nbsp;
+                                <b>ในวันที่</b>
+
+                                <%if(data.data.datefrom!="" && data.data.dateto!="" ){ %>
+                                    <%if (data.data.datefrom==data.data.dateto){ %>
+                                        <%=moment(data.data.datefrom).format('DD /MM/YYYY') %>
+                                            <% } else{ %>
+                                                <%=moment(data.data.datefrom).format('DD /MM/YYYY') %> -
+                                                    <%=moment(data.data.dateto).format('DD /MM/YYYY') %>
+                                                        <% }} %>
+                                                            &nbsp;&nbsp;&nbsp;
+                                                            <b>ในช่วงเวลา</b>
+
+                                                            <%=data.data.datetime %>
+                                                                &nbsp;&nbsp;&nbsp;
+                                                                <b>รวมจำนวน</b>
+
+                                                                <%=data.data.datenum %>
+
+            </td>
+        </tr>
+        <tr style="page-break-inside: avoid">
+            <td class="left" colspan="2">
+
+
+                <div style="
+                width:680px;
+                
+                word-wrap:break-word;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>เหตุผลเนื่องจาก </b>
+                    <%- data.data.detail -%>
+                </div>
+
+            </td>
+        </tr>
+        <tr style="page-break-inside: avoid;">
+            <td class="center" style="padding: 30px 10px 30px 10px;" colspan="2">
+                <div class="row">
+                    <div class="column" style="text-align: center; page-break-inside: avoid; display: block;">
+
+                        <br />
+
+                    </div>
+                    <div class="column" style="text-align: center; page-break-inside: avoid; display: block;">
+
+
+                        <%= employ.fullname %>
+                            <br />
+                            <%= employ.position %>
+                                <br />
+                                ผู้ขออนุัมัติ
+                    </div>
+
+                </div>
+
+            </td>
+        </tr>
+        <tr style="page-break-inside: avoid">
+            <td colspan="2">
+                <div class="row">
+
+                    <% for(var i=0; i < data.typememo.apr_.length; i++) { %>
+                        <div class="column" style="text-align: center; page-break-inside: avoid; display: block;">
+                            <% if(data.typememo.apr_[i].signature==undefined) { %>
+
+                                <!-- <div style=" display: flex;
+                                        align-items: end; justify-content: center; height: 80px;
+                                        ">
+                                    <img style='
+                                         max-width: 100%;
+                                         max-height: 100%;
+                                         width: auto; text-align: center;
+                                         height: 100px; object-fit: contain;'
+                                        src="http://localhost:3006/api/v1/image/sign/nosign.png">
+                                </div>
+                                <div style=" display: flex;
+                    justify-content: center;
+                    color: black;">................................................</div> -->
+                                <div id="my_div">
+                                    <div style=" display: flex;
+align-self: flex-end; justify-content: center; height: 100px;
+">
+                                        <img style='
+max-width: 100%;
+max-height: 100%;
+width: auto; text-align: center; transform: scale(0.8);
+height: auto; ' src="http://localhost:3006/api/v1/image/sign/nosign.png">
+                                        <p>................................................</p>
+                                    </div>
+                                </div>
+                                <% } else if(data.typememo.apr_[i].signature=="" ) { %>
+
+                                    <!-- <div style=" display: flex;
+                                            align-items: end; justify-content: center; height: 80px;
+                                            ">
+                                        <img style='
+                                             max-width: 100%;
+                                             max-height: 100%;
+                                             width: auto; text-align: center;
+                                             height: 100px; object-fit: contain;'
+                                            src="http://localhost:3006/api/v1/image/sign/nosign.png">
+                                    </div>
+                                    <div style=" display: flex;
+                    justify-content: center;
+                    color: black;">................................................</div> -->
+                                    <div id="my_div">
+                                        <div style=" display: flex;
+align-self: flex-end; justify-content: center; height: 100px;
+">
+                                            <img style='
+max-width: 100%;
+max-height: 100%;
+width: auto; text-align: center; transform: scale(0.8);
+height: auto; ' src="http://localhost:3006/api/v1/image/sign/nosign.png">
+                                            <p>................................................</p>
+                                        </div>
+                                    </div>
+
+                                    <% } else { %>
+                                        <!-- <div style=" display: flex;
+                    align-items: end; justify-content: center; height: 80px;
+                    ">
+                                            <img style='
+                                                max-width: 100%;
+                                                max-height: 100%;
+                                                width: auto; text-align: center;
+                                                height: 100px; object-fit: contain;'
+                                                src=<%=data.typememo.apr_[i].signature%> />
+                                        </div>
+                                        <div style=" display: flex;
+                                            justify-content: center;
+                                            color: black;">................................................</div> -->
+
+                                        <div id="my_div">
+                                            <div style=" display: flex;
+align-self: flex-end; justify-content: center; height: 100px;
+">
+                                                <img style='
+max-width: 100%;
+max-height: 100%;
+width: auto; text-align: center; transform: scale(0.8);
+height: auto; ' src=<%=data.typememo.apr_[i].signature%> />
+                                                <p>................................................</p>
+                                            </div>
+                                        </div>
+                                        <% } %>
+
+                                            <%=data.typememo.apr_[i].fullname%>
+                                                <br />
+                                                <b>
+                                                    <%=data.typememo.apr_[i].role%>
+                                                </b>
+                                                <br />
+                                                <b>
+                                                    <%=data.typememo.apr_[i].stApr%>
+                                                </b>
+                                                <br />
+                                                <b>วันที่ : <%=data.typememo.apr_[i].dateApr%></b>
+                        </div>
+
+                        <% } %>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div id="pageFooter"></div>
+</body>
+
+</html>
